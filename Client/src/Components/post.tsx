@@ -1,15 +1,19 @@
 import { useState } from "react";
-import '../style/post.css'
+import "../style/post.css";
 
 type PostType = {
   title: string;
   image: string;
   author: string;
   time: string;
-  likesNum : number;
+  likesNum: number;
 };
 
-function Post({ title, image, author, time, likesNum}: PostType) {
+type TipeProps = {
+  Posts: PostType[];
+}
+
+function Post({ Posts }: TipeProps) {
   const [like, setLike] = useState(false);
 
   const handleLike = () => {
@@ -17,18 +21,26 @@ function Post({ title, image, author, time, likesNum}: PostType) {
   };
 
   return (
-
-      <div className="post">
-        <img src={image} alt={title} />
-        <h2>{title}</h2>
-        <div className="puter">
-        <p>By {author}</p>
-        <p>{time}</p>
-        <button onClick={() => { handleLike();  }}>
-          {likesNum}{like ? "Like!" : "Like"}
-        </button>
-      </div>
-      </div>
+    <div className="cards-container">
+      {Posts.map((Post) => (
+        <div className="post">
+          <img src={Post.image} alt={Post.title} />
+          <h2>{Post.title}</h2>
+          <div className="puter">
+            <p>By {Post.author}</p>
+            <p>{Post.time}</p>
+            <button
+              onClick={() => {
+                handleLike();
+              }}
+            >
+              {Post.likesNum}
+              {like ? "Like!" : "Like"}
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
 
