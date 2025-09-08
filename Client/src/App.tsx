@@ -1,9 +1,12 @@
-import './App.css';
-import ApplicationLayout from './Components/application-layout/ApplicationLayout.tsx';
+import "./App.css";
+import ApplicationLayout from "./Components/application-layout/ApplicationLayout.tsx";
+import Home from "./Pages/Home.tsx";
 
 function App() {
   return (
-    <ApplicationLayout />
+    <ApplicationLayout>
+      <Home />
+    </ApplicationLayout>
   );
 }
 

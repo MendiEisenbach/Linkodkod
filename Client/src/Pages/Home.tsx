@@ -1,12 +1,11 @@
-
 import PostsList from "../Components/PostsList";
+import '../style/Home.css'
 
 function Home() {
   return (
-    <>
-      <h1>Linkodkod</h1>
+    <div className="Home">
       <PostsList />
-    </>
+    </div>
   );
 }
 
