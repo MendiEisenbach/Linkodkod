@@ -1,13 +1,13 @@
-import './App.css'
-import Post from "../Components/post"
+
+import PostsList from "../Components/PostsList";
 
 function Home() {
   return (
     <>
-      <Post Posts={}
-      />
+      <h1>Linkodkod</h1>
+      <PostsList />
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
