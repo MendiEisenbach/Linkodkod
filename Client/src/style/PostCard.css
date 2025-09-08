@@ -1,0 +1,27 @@
+.post {
+  width: 300px;
+  border: 1px solid black;
+  margin: 10px auto;
+  padding: 10px;
+}
+
+.post img {
+  width: 100%;
+}
+
+.post h2 {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.puter {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.puter button {
+  padding: 3px 6px;
+  cursor: pointer;
+}
+
