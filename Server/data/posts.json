@@ -1,5 +1,6 @@
-const posts = [
+[
   {
+    "id": "1",
     "image": "https://static.wixstatic.com/media/6480a3_2987c5649dc74ed99707a113681f4bcf~mv2.jpg/v1/fill/w_640,h_456,al_t,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/6480a3_2987c5649dc74ed99707a113681f4bcf~mv2.jpg",
     "title": "work",
     "likesNum": 12,
@@ -7,6 +8,7 @@ const posts = [
     "time": "13:14"
   },
   {
+    "id": "2",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUcgEGf_85b26u1WVWT1HAf95DTQfuC9YKWg&s",
     "title": "יום יפה",
     "likesNum": 5,
@@ -14,6 +16,7 @@ const posts = [
     "time": "20:22"
   },
   {
+    "id": "3",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh2xarONyaG1rOTzMky9gGFbyIuUW7HeHIJQ&s",
     "title": "HIIII",
     "likesNum": 20,
@@ -22,4 +25,4 @@ const posts = [
   }
 ]
 
-export default posts;
+
