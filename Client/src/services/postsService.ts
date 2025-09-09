@@ -1,10 +1,16 @@
-import type {PostType } from "../Components/PostCard";
+import type { PostType } from "../Components/PostCard";
 
 const API_BASE = "http://localhost:3000";
 
 export async function getAllPosts(): Promise<PostType[]> {
   const res = await fetch(`${API_BASE}/api/posts`);
+  if (!res.ok) throw new Error("Failed fetch posts");
+  return res.json();
+}
 
-  if (!res.ok) throw new Error("Failed to fetch posts");
+export async function getPostById(id: string): Promise<PostType> {
+  const res = await fetch(`${API_BASE}/api/posts/${id}`);
+  if (res.status === 404) throw new Error("Post not found");
+  if (!res.ok) throw new Error("Failed fetch post");
   return res.json();
 }

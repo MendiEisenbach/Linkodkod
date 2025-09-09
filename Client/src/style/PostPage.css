@@ -1,0 +1,17 @@
+.post-page {
+  padding: 10px;
+  background-color: lightyellow;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.post-page .post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
