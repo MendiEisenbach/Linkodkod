@@ -1,12 +1,17 @@
 import "./App.css";
-import ApplicationLayout from "./Components/application-layout/ApplicationLayout.tsx";
-import Home from "./Pages/Home.tsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ApplicationLayout from "./Components/application-layout/ApplicationLayout";
+import Home from "./Pages/Home";
 
 function App() {
   return (
-    <ApplicationLayout>
-      <Home />
-    </ApplicationLayout>
+    <BrowserRouter>
+      <ApplicationLayout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </ApplicationLayout>
+    </BrowserRouter>
   );
 }
 
