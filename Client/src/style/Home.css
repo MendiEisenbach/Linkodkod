@@ -5,3 +5,20 @@
   padding: 10px;
 
 }
+
+.status {
+  display: inline-block;
+  padding: 8px 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.error {
+  display: inline-block;
+  padding: 8px 10px;
+  color: rgb(178, 3, 3);
+  background-color: #e69a9a;
+  border: 1px solid #e0b3b3;
+  border-radius: 4px;
+}
