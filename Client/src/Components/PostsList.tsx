@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import PostCard, { type PostType } from "./PostCard";
 import { getAllPosts } from "../services/postsService";
 
@@ -13,7 +14,7 @@ function PostsList() {
         const data = await getAllPosts();
         setPosts(data);
       } catch (e: any) {
-        setError(e?.message ? e.message : "Failed load");
+        setError(e?.message || "Failed load");
       } finally {
         setLoading(false);
       }
@@ -26,8 +27,10 @@ function PostsList() {
 
   return (
     <div className="cards-container">
-      {posts.map((p, idx) => (
-        <PostCard key={idx} post={p} />
+      {posts.map((p) => (
+        <Link key={p.id} to={`/posts/${p.id}`}>
+          <PostCard post={p} />
+        </Link>
       ))}
     </div>
   );

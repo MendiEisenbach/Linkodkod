@@ -1,16 +1,16 @@
 import { useState } from "react";
 import "../style/PostCard.css";
 
-
 export type PostType = {
+  id: string; 
   title: string;
   image: string;
   author: string;
   time: string;
-  likesNum: number ;
+  likesNum: number;
 };
 
-function PostCard({post }: { post : PostType }) {
+function PostCard({ post }: { post: PostType }) {
   const [liked, setLiked] = useState(false);
 
   function handleLike() {
@@ -24,9 +24,9 @@ function PostCard({post }: { post : PostType }) {
       <div className="puter">
         <p>By {post.author}</p>
         <p>{post.time}</p>
-         </div>
+      </div>
       <button onClick={handleLike}>
-        ({post.likesNum}) {liked ? "like" : "Like!"} 
+        ({post.likesNum}) {liked ? "like" : "Like!"}
       </button>
     </div>
   );

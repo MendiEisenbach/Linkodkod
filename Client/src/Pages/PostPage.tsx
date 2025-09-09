@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import type { PostType } from "../Components/PostCard";
 import { getPostById } from "../services/postsService";
 import "../style/PostPage.css";
@@ -34,7 +34,6 @@ function PostPage() {
 
   return (
     <div className="post-page">
-      <Link to="/" className="back-link">Back home</Link>
       <div className="post">
         <img src={post.image} alt={post.title} />
         <h2>{post.title}</h2>
