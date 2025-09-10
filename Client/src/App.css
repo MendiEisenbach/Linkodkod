@@ -40,3 +40,42 @@
 .read-the-docs {
   color: #888;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  color: #262626;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.status, .error {
+  text-align: center;
+  margin: 20px;
+  font-size: 16px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+button {
+  cursor: pointer;
+  font-size: 14px;
+}

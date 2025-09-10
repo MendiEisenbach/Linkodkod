@@ -1,28 +1,55 @@
 .post {
-  width: 300px;
-  border: 1px solid black;
-  color: black;
-  margin: 10px auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin: 10px;
   padding: 10px;
+  max-width: 300px;
 }
 
 .post img {
   width: 100%;
+  border-radius: 4px;
 }
 
 .post h2 {
-  font-size: 16px;
-  margin: 5px 0;
+  font-size: 18px;
+  margin: 8px 0;
 }
 
-.puter {
+.post .puter {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
+  color: #666;
 }
 
-.puter button {
-  padding: 3px 6px;
+.post button {
+  margin-top: 8px;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+  color: white;
   cursor: pointer;
+}
+
+.cards-container a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+} 
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.status, .error {
+  text-align: center;
+  margin: 20px;
+  font-size: 16px;
 }
 

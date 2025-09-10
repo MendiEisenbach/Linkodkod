@@ -1,7 +1,14 @@
 .post-page {
-  padding: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
 }
 
-.post-image {
-  max-width: 300px;
+.post-page img {
+  width: 100%;
+  border-radius: 4px;
+  margin: 10px 0;
 }

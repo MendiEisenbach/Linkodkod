@@ -1,18 +1,15 @@
 .auth-message {
-  padding: 10px;
-}
-
-.auth-message p {
-  margin: 0 0 8px;
-  font-size: 14px;
-  color: #333;
+  text-align: center;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  max-width: 400px;
 }
 
 .auth-message a {
-  color: #0077cc;
-  text-decoration: none;
-}
-
-.auth-message a:hover {
-  text-decoration: underline;
+  display: inline-block;
+  margin-top: 10px;
+  color: #dd2a7b;
+  font-weight: bold;
 }

@@ -1,12 +1,16 @@
 .login-container {
-  padding: 10px;
+  max-width: 400px;
+  margin: 50px auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  max-width: 300px;
+  gap: 12px;
 }
 
 .login-form label {
@@ -16,23 +20,30 @@
 }
 
 .login-form input {
-  padding: 4px;
-  margin-top: 2px;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 .login-buttons {
   display: flex;
-  gap: 8px;
-  margin-top: 6px;
+  gap: 10px;
 }
 
+.login-buttons button {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #e17d2a, #d42c77, #8023b6);
+  color: white;
+  cursor: pointer;
+}
 
 .login-error {
-  margin-top: 8px;
-  color: #900;
+  color: red;
   font-size: 14px;
+  text-align: center;
 }
 
 
