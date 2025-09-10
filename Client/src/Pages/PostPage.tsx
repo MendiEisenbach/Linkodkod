@@ -1,48 +1,56 @@
-import { useEffect, useState } from "react";
-import { useParams} from "react-router-dom";
-import type { PostType } from "../Components/PostCard";
+import { useEffect, useState, useContext } from "react";
+import { useParams, Link } from "react-router-dom";
 import { getPostById } from "../services/postsService";
+import { AuthContext } from "../context/AuthContext";
+import { type PostType } from "../Components/PostCard";
+import "../style/AuthMessages.css";
 import "../style/PostPage.css";
 
 function PostPage() {
-  const { id } = useParams<{ id: string }>();
+  const { token } = useContext(AuthContext);
+  const { id } = useParams();
   const [post, setPost] = useState<PostType | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (!id) {
-      setError("Missing id");
-      setLoading(false);
-      return;
-    }
-    (async () => {
+    if (!token) return;
+    async function load() {
+      setLoading(true);
       try {
-        const data = await getPostById(id);
-        setPost(data);
+        if (id) {
+          const data = await getPostById(id);
+          setPost(data);
+        }
       } catch (e: any) {
         setError(e?.message || "Failed to load post");
       } finally {
         setLoading(false);
       }
-    })();
-  }, [id]);
+    }
+    load();
+  }, [id, token]);
 
-  if (loading) return <div className="status">Loading post...</div>;
-  if (error) return <div className="error">error:{error}</div>;
-  if (!post) return <div className="error">Post not fund</div>;
+  if (!token) {
+    return (
+      <div className="auth-message">
+        <p>You must log in to view this post.</p>
+        <Link to="/login">Go to Login</Link>
+      </div>
+    );
+  }
+
+  if (loading) return <div>Loading post…</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!post) return <div>No post found.</div>;
 
   return (
     <div className="post-page">
-      <div className="post">
-        <img src={post.image} alt={post.title} />
-        <h2>{post.title}</h2>
-        <div className="puter">
-          <p>By {post.author}</p>
-          <p>{post.time}</p>
-        </div>
-        <div className="likes">Likes: {post.likesNum}</div>
-      </div>
+      <h2>{post.title}</h2>
+      <img className="post-image" src={post.image} alt={post.title} />
+      <p>By {post.author}</p>
+      <p>{post.time}</p>
+      <p>Likes: {post.likesNum}</p>
     </div>
   );
 }

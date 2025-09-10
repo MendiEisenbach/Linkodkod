@@ -1,45 +1,27 @@
 .create-post {
   padding: 10px;
-
 }
 
 .create-post-form {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-width: 320px;
-}
-
-.create-post-form label {
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
+  max-width: 300px;
 }
 
 .create-post-form input {
-  padding: 6px;
+  padding: 4px;
   border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .create-post-form button {
-  padding: 8px;
+  padding: 6px 8px;
   cursor: pointer;
 }
 
-.error {
-  margin-top: 10px;
+.form-error {
+  margin-top: 8px;
   color: #900;
-  background: #ffe6e6;
-  border: 1px solid #e0b3b3;
-  padding: 8px;
-  display: inline-block;
-}
-
-.success {
-  margin-top: 10px;
-  color: #0a6;
-  background: #e6fff3;
-  border: 1px solid #b3e0d0;
-  padding: 8px;
-  display: inline-block;
+  font-size: 14px;
 }

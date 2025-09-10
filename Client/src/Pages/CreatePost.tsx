@@ -1,74 +1,47 @@
-import { useState } from "react";
-import { createPost, type createPostInput } from "../services/postsService";
+import { useState, useContext } from "react";
+import { createPost } from "../services/postsService";
+import { AuthContext } from "../context/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
+import "../style/AuthMessages.css";
 import "../style/CreatePost.css";
 
 function CreatePost() {
-  const [form, setForm] = useState<createPostInput>({
-    title: "",
-    image: "",
-    author: "",
-    time: "",
-  });
-  const [loading, setLoading] = useState(false);
+  const { token, username } = useContext(AuthContext);
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const [time, setTime] = useState("");
   const [error, setError] = useState("");
-  const [successMsg, setSuccessMsg] = useState("");
+  const navigate = useNavigate();
 
-  function handleChange(e: any) {
-    const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
+  async function onSubmit(e: any) {
+    e.preventDefault();
+    try {
+      await createPost({ title, image, author: username, time });
+      navigate("/");
+    } catch (err: any) {
+      setError(err?.message || "Failed to create post");
+    }
   }
 
-  async function handleSubmit(e: any) {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    setSuccessMsg("");
-    try {
-      if (!form.title || !form.image || !form.author || !form.time) {
-        throw new Error("Please fill in all fields");
-      }
-        const created = await createPost(form);
-        setSuccessMsg(`post ${created.id} was sent successfully!`);
-
-      setForm({ title: "", image: "", author: "", time: "" });
-    } catch (err: any) {
-      setError(err?.message || "Something went wrong." );
-    } finally {
-      setLoading(false);
-    }
+  if (!token) {
+    return (
+      <div className="auth-message">
+        <p>You must log in to create a post.</p>
+        <Link to="/login">Go to Login</Link>
+      </div>
+    );
   }
 
   return (
     <div className="create-post">
-      <h2>Publish a new post</h2>
-
-      <form onSubmit={handleSubmit} className="create-post-form">
-        <label>
-          content
-          <input name="title" value={form.title} onChange={handleChange} />
-        </label>
-
-        <label>
-          Link to image (URL)
-          <input name="image" value={form.image} onChange={handleChange} />
-        </label>
-
-        <label>
-          Your name
-          <input name="author" value={form.author} onChange={handleChange} />
-        </label>
-        <label>
-          time
-          <input name="time" value={form.time} onChange={handleChange} />
-        </label>
-
-        <button type="submit">
-          {loading ? "Sending..." : "Publish"}
-        </button>
+      <h2>Create a New Post</h2>
+      <form className="create-post-form" onSubmit={onSubmit}>
+        <input placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} />
+        <input placeholder="Image URL" value={image} onChange={e => setImage(e.target.value)} />
+        <input placeholder="Time" value={time} onChange={e => setTime(e.target.value)} />
+        <button type="submit">Save</button>
       </form>
-
-      {error && <div className="error">error: {error}</div>}
-      {successMsg && <div className="success">{successMsg}</div>}
+      {error && <div className="form-error">Error: {error}</div>}
     </div>
   );
 }
