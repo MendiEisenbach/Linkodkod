@@ -1,27 +1,35 @@
 .create-post {
-  padding: 10px;
+  max-width: 400px;
+  margin: 40px auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px;
 }
 
 .create-post-form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  max-width: 300px;
+  gap: 10px;
 }
 
 .create-post-form input {
-  padding: 4px;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 .create-post-form button {
-  padding: 6px 8px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #e17d2a, #d42c77, #8023b6);
+  color: white;
   cursor: pointer;
 }
 
 .form-error {
-  margin-top: 8px;
-  color: #900;
+  margin-top: 10px;
+  color: red;
   font-size: 14px;
 }

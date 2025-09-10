@@ -4,6 +4,7 @@ import { getAllPosts } from "../services/postsService";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import "../style/AuthMessages.css";
+import "../style/PostsList.css";
 
 function PostsList() {
   const { token } = useContext(AuthContext);
