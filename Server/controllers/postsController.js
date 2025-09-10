@@ -1,4 +1,4 @@
-import { fetchAllPosts, fetchPostById } from "../services/postsService.js";
+import { fetchAllPosts, fetchPostById, insertPost } from "../services/postsService.js";
 
 export async function getAllPosts(req, res) {
   try {
@@ -35,5 +35,31 @@ export async function getPostById(req, res) {
     console.log(err);
     res.status(500).json({ error: "Server Error" });
   }
+}
+
+export async function createPost(req, res) {
+  try {
+    const { title, image, author, time } = req.body ?? {};
+
+    if (!title || !String(title).trim()) {
+      return res.status(400).json({ error: "Invalid request", message: "title is required" });
+    }
+    if (!image || !String(image).trim()) {
+      return res.status(400).json({ error: "Invalid request", message: "image is required" });
+    }
+    if (!author || !String(author).trim()) {
+      return res.status(400).json({ error: "Invalid request", message: "author is required" });
+    }
+    if (!time || !String(time).trim()) {
+      return res.status(400).json({ error: "Invalid request", message: "time is required" });
+    }
+
+    const newPost = await insertPost({ title, image, author, time });
+    res.status(201).json(newPost);
+  } catch (err) {
+    console.error("Failed create post:", err);
+    res.status(500).json({ error: "Server Error" });
+  }
+  
 }
 
