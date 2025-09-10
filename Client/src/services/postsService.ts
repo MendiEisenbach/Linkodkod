@@ -14,3 +14,24 @@ export async function getPostById(id: string): Promise<PostType> {
   if (!res.ok) throw new Error("Failed fetch post");
   return res.json();
 }
+
+
+export type createPostInput = {
+  title: string;
+  image: string; 
+  author: string;
+  time: string;  
+};
+
+export async function createPost(input: createPostInput): Promise<PostType> {
+  const res = await fetch(`${API_BASE}/api/posts`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(input),
+  });
+if (!res.ok) {
+  const { message } = await res.json();
+  throw new Error(message || "Failed to create post");
+}
+  return res.json();
+}

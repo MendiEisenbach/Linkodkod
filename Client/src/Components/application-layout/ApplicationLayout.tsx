@@ -12,6 +12,7 @@ function ApplicationLayout(props: PropsWithChildren) {
         <Slogan />
         <nav className="navbar">
           <Link to="/">Home</Link>
+          <Link to="/create">Publish a post</Link>
         </nav>
       </header>
       {props.children}
